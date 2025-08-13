@@ -1,0 +1,29 @@
+# Node modules (frontend)
+node_modules/
+
+# Java build files
+spring-boot-backend/target/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# OS junk files
+.DS_Store
+Thumbs.db
+
+# Env & secrets
+.env
+.env.*
+spring-boot-backend/src/main/resources/application.properties
+
+# Miscellaneous
+.idea/
+.vscode/
+
+# Optional: ignore Mac system files
+*.DS_Store
+
+# Optional: ignore Windows system files
+desktop.ini
