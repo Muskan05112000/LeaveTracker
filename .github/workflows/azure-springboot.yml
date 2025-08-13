@@ -17,6 +17,22 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Build React frontend
+        run: |
+          cd frontend
+          npm ci
+          npm run build
+
+      - name: Copy frontend build to Spring Boot static resources
+        run: |
+          mkdir -p spring-boot-backend/src/main/resources/static
+          cp -r frontend/build/* spring-boot-backend/src/main/resources/static/
+
       - name: Build with Maven
         run: mvn -B clean package --file spring-boot-backend/pom.xml
 

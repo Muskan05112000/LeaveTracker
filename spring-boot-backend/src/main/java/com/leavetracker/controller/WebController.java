@@ -5,9 +5,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class WebController {
-    // Forward all routes except those containing a dot (.) or starting with /api to index.html
-    @RequestMapping(value = "/{path:[^\\.]*}")
-    public String redirect() {
+    
+    // Serve React frontend for all non-API routes
+    @RequestMapping(value = {"/", "/{path:[^\\.]*}"})
+    public String forward() {
         return "forward:/index.html";
     }
 }

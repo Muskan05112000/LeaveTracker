@@ -20,7 +20,7 @@ export function AuthProvider({ children }) {
     }
   }, [user]);
 
-  const API_BASE = 'https://cts-vibeappso3801-5.azurewebsites.net/api';
+  const API_BASE = '/api';
   // Real login function (calls backend)
   const login = async (username, password) => {
     setLoading(true);
