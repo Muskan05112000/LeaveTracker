@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
 const AuthContext = createContext();
-
+// Auth file go bushhh.....
 export function AuthProvider({ children }) {
   // Initialize user from localStorage if available
   const [user, setUser] = useState(() => {
