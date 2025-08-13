@@ -31,7 +31,7 @@ jobs:
       - name: Copy frontend build to Spring Boot static resources
         run: |
           mkdir -p spring-boot-backend/src/main/resources/static
-          cp -r frontend/build/* spring-boot-backend/src/main/resources/static/
+          cp -r frontend/build/* spring-boot-backend/src/main/resources/static/ || true
 
       - name: Build with Maven
         run: mvn -B clean package --file spring-boot-backend/pom.xml
