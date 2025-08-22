@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
 const AuthContext = createContext();
-
+// Auth file go bushhh.
 export function AuthProvider({ children }) {
   // Initialize user from localStorage if available
   const [user, setUser] = useState(() => {
@@ -20,13 +20,13 @@ export function AuthProvider({ children }) {
     }
   }, [user]);
 
-  const API_BASE = process.env.REACT_APP_API_URL || '/api';
+  const API_BASE = '/api';
   // Real login function (calls backend)
   const login = async (username, password) => {
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch(`${API_BASE}/login`, {
+      const res = await fetch(`${API_BASE}/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password })
