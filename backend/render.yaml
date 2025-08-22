@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: leave-tracker-backend
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: MONGODB_URI
+        sync: false # Set in Render dashboard
+    autoDeploy: true
+    region: oregon
+    branch: main
+    rootDir: .

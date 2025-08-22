@@ -4,6 +4,19 @@ console.log('PORT env:', process.env.PORT);
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
+
+// Use environment variable for MongoDB URI, fallback to local for dev
+defaultMongoUri = 'mongodb://localhost:27017/leavetracker';
+const mongoUri = process.env.MONGODB_URI || defaultMongoUri;
+mongoose.connect(mongoUri, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+}).then(() => {
+  console.log('MongoDB connected');
+}).catch((err) => {
+  console.error('MongoDB connection error:', err);
+});
+
 const path= require('path');
 
 const app = express(); // <-- Initialize app before use
@@ -28,9 +41,10 @@ app.use(cors({
 // });
 console.log('PORT env:', process.env.PORT);
 
-const port = 4000;
+// Use environment variable PORT for deployment, fallback to 4000 for local dev
+const port = process.env.PORT || 4000;
 app.listen(port, '0.0.0.0', () => {
-  console.log(`Backend server running on http://localhost:4000`);
+  console.log(`Backend server running on http://localhost:${port}`);
 });
 
 // Log all requests and bodies for debugging
